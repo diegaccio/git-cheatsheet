@@ -9,11 +9,11 @@ I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.githu
 
 Using Git commands directly has transformed the way I work:
 
-**Efficiency**: Commands are faster for repetitive tasks and managing large repositories.
-**Flexibility**: The command line offers advanced features not always accessible in GUIs.
-**Portability**: Command-line skills are universally applicable across systems (like servers you access via ssh).
-**Problem-Solving**: Most Git troubleshooting resources are command-centric (like aborting a bad merge).
-**Control**: The command line provides unmatched precision and intent in operations.
+- **Efficiency**: Commands are faster for repetitive tasks and managing large repositories.
+- **Flexibility**: The command line offers advanced features not always accessible in GUIs.
+- **Portability**: Command-line skills are universally applicable across systems (like servers you access via ssh).
+- **Problem-Solving**: Most Git troubleshooting resources are command-centric (like aborting a bad merge).
+- **Control**: The command line provides unmatched precision and intent in operations.
 
 Mastering Git commands not only boosts productivity but also enhances your **understanding** of version control, making you a more versatile developer.
 
