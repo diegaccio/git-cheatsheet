@@ -22,7 +22,7 @@ Mastering Git commands not only boosts productivity but also enhances your **und
 - [Creating Snapshots](#creating-snapshots)
 - [Browsing History](#browsing-history)
 - [Branching & Merging](#branching--merging)
-- [Collaboration](#collaboration)
+- [Working with remote repositories](#working-with-remote-repositories)
 - [Rewriting History](#rewriting-history)
 - [Powerful Alias](#powerful-alias)
 
@@ -237,7 +237,7 @@ git tag -d v1.0                 # Deletes the given tag
 
 ## Branching & Merging
 
-### Managing branches
+### Managing branches
 
 ```
 git branch bugfix               # Creates a new branch called bugfix
@@ -294,12 +294,12 @@ git rebase master               # Changes the base of the current branch - it re
 git cherry-pick dad47ed         # Applies the given commit on the current branch
 ```
 
-## Collaboration
+## Working with remote repositories
 
 ### Cloning a repository
 
 ```
-git clone url
+git clone url                   #clones the repository in the current directory
 ```
 
 ### Syncing with remotes
@@ -380,14 +380,14 @@ git rebase -i HEAD~5                #starts the interactive rebase at the fifth 
 
 ## Powerful Alias
 
-# Adding alias from command line
+### Adding alias from command line
 
 ```
 git config --global alias.st status         #add a new line to the [alias] section of your global config
 
 ```
 
-# Editing the global .gitconfi file
+### Editing the global .gitconfi file
 
 Open the global config file in the default editor:
 
@@ -402,7 +402,7 @@ And add this section:
    st = status
 ```
 
-## The lazy typer
+### The lazy typer
 
 ```
 [alias]
@@ -413,7 +413,7 @@ And add this section:
     br = branch
 ```
 
-## Common Typos
+### Common Typos
 
 ```
 [alias]
@@ -422,7 +422,7 @@ And add this section:
     statut = status
 ```
 
-## Speedy commands
+### Speedy commands
 
 ```
 [alias]
@@ -434,7 +434,7 @@ And add this section:
     gitoutgoing = log @{upstream}..HEAD        # what would be pushed
 ```
 
-## Pretty formats
+### Pretty formats
 
 Add this section to your .gitconfig file:
 
