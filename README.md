@@ -4,7 +4,7 @@
 
 ## Why Learn Git Commands?
 
-I started using Git with a GUI tool, Git Extensions, on Windows, which I still rely on for my daily work. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my favorite IDE is VS Code. Its Git integration, although helpful, so powerfull. So I came across THE book [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub, which motivated me to embrace Git commands.
+I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my favorite IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git commands.
 
 Using Git commands directly has transformed the way I work:
 
@@ -108,14 +108,6 @@ git diff --staged               # Shows staged changes
 git diff --cached               # Same as the above
 ```
 
-### Viewing the history
-
-```
-git log                         # Full history
-git log --oneline               # Summary
-git log --reverse               # Lists the commits from the oldest to the newest
-```
-
 ### Viewing a commit
 
 ```
@@ -151,6 +143,9 @@ git restore --source=HEAD~2 file.js
 ### Viewing the history
 
 ```
+git log                         # Full history
+git log --oneline               # Summary
+git log --reverse               # Lists the commits from the oldest to the newest
 git log --stat                  # Shows the list of modified files
 git log --patch                 # Shows the actual changes (patches)
 ```
@@ -280,20 +275,20 @@ git merge --squash bugfix       # Performs a squash merge
 git merge --abort               # Aborts the merge
 ```
 
-## Viewing the merged branches
+### Viewing the merged branches
 
 ```
 git branch --merged             # Shows the merged branches
 git branch --no-merged          # Shows the unmerged branches
 ```
 
-## Rebasing
+### Rebasing
 
 ```
-git rebase master               # Changes the base of the current branch - it rewrites history , so don't try this at home
+git rebase master               # Changes the base of the current branch - it rewrites history so be careful with shared work
 ```
 
-## Cherry picking
+### Cherry picking
 
 ```
 git cherry-pick dad47ed         # Applies the given commit on the current branch
@@ -344,7 +339,7 @@ git remote rm upstream          # Remotes upstream
 
 ## Rewriting History
 
-Please avoid **Rewriting Shared History**: Only rewrite history in private branches or before pushing changes to the remote.
+Please avoid **Rewriting Shared History**: only rewrite history in private branches or before pushing changes to the remote.
 Use git revert Instead: To fix mistakes in a public branch, create new commits that undo or adjust previous changes without altering the existing history.
 These practices help maintain a clear and consistent history, minimizing disruptions for collaborators.
 
