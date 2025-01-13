@@ -1,4 +1,4 @@
-<link rel="icon" href="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" type="image/png">
+<link rel="icon" href="./Git-Icon.png" type="image/png">
 <img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png " height="50" />
 
 # Git Command Line Cheat Sheet
