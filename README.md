@@ -1,16 +1,58 @@
+<img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png " height="50" />
+
 # Git Command Line Cheat Sheet
 
-### The essential Git commands every developer must know
+## Why Learn Git Commands?
 
-![Git Logo](https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png)
+I started using Git with a GUI tool, Git Extensions, on Windows, which I still rely on for my daily work. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my favorite IDE is VS Code. Its Git integration, although helpful, so powerfull. So I came across THE book [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub, which motivated me to embrace Git commands.
+
+Using Git commands directly has transformed the way I work:
+
+**Efficiency**: Commands are faster for repetitive tasks and managing large repositories.
+**Flexibility**: The command line offers advanced features not always accessible in GUIs.
+**Portability**: Command-line skills are universally applicable across systems (like servers you access via ssh).
+**Problem-Solving**: Most Git troubleshooting resources are command-centric (like aborting a bad merge).
+**Control**: The command line provides unmatched precision and intent in operations.
+
+Mastering Git commands not only boosts productivity but also enhances your **understanding** of version control, making you a more versatile developer.
 
 ## Table of Contents
 
+- [Configuration](#configuration)
 - [Creating Snapshots](#creating-snapshots)
 - [Browsing History](#browsing-history)
 - [Branching & Merging](#branching--merging)
 - [Collaboration](#collaboration)
 - [Rewriting History](#rewriting-history)
+
+## Configuration
+
+### Global vs Local
+
+```
+git config --global                             #settings for the current user
+git config --local                              #settings for the current folder
+```
+
+### Showing the configuration
+
+```
+git config --global -l
+```
+
+### User
+
+```
+git config --global user.name "John Smith"              #sets the user name
+git config --global user.email "johnsmith@gmail.com"    #sets the user email
+```
+
+### Editor
+
+```
+git config --global core.editor "code --wait"   # Sets the default editor to vscode
+git config --global -e                          # Opens the global config file in the default editor
+```
 
 ## Creating Snapshots
 
@@ -108,509 +150,234 @@ git restore --source=HEAD~2 file.js
 ### Viewing the history
 
 ```
-git log --stat
+git log --stat                  # Shows the list of modified files
+git log --patch                 # Shows the actual changes (patches)
 ```
 
-# Shows the list of modified files
+### Filtering the history
 
 ```
-git log --patch
+git log -3                      # Shows the last 3 entries
+git log --author="Diego"
+git log --before="2024-08-17"
+git log --after="one week ago"
+git log --grep="GUI"            # Commits with "GUI" in their message
+git log -S"GUI"                 # Commits with "GUI" in their patches
+git log hash1..hash2            # Range of commits
+git log file.txt                # Commits that touched file.txt
 ```
 
-# Shows the actual changes (patches)
-
-Filtering the history
+### Formatting the log output
 
 ```
-git log -3
+git log --pretty=format:"%an committed %H"
 ```
 
-# Shows the last 3 entries
+### Creating an alias
 
 ```
-git log --author=ÒMoshÓ
+git config --global alias.lg "log --oneline"
 ```
 
-```
-git log --before=Ò2020-08-17Ó
-```
+### Viewing a commit
 
 ```
-git log --after=Òone week agoÓ
+git show HEAD~2             # Shows the second commit after HEAD
+git show HEAD~2:file1.txt   # Shows the version of file stored in this commit
 ```
 
-```
-git log --grep=ÒGUIÓ
-```
-
-# Commits with ÒGUIÓ in their message
+### Comparing commits
 
 ```
-git log -SÒGUIÓ
+git diff HEAD~2 HEAD            # Shows the changes between two commits
+git diff HEAD~2 HEAD file.txt   # Changes to file.txt only
 ```
 
-# Commits with ÒGUIÓ in their patches
+### Checking out a commit
 
 ```
-git log hash1..hash2
+git checkout dad47ed            # Checks out the given commit
+git checkout master             # Checks out the master branch
 ```
 
-# Range of commits
+### Finding a bad commit
 
 ```
-git log file.txt
+git bisect start                # Starts the bisect session
+git bisect bad                  # Marks the current commit as a bad commit
+git bisect good ca49180         # Marks the given commit as a good commit
+git bisect reset                # Terminates the bisect session
 ```
 
-# Commits that touched file.txt
-
-Formatting the log output
-
-```
-git log --pretty=format:Ó%an committed %HÓ
-```
-
-Creating an alias
-
-```
-git config --global alias.lg Òlog --oneline"
-```
-
-Viewing a commit
-
-```
-git show HEAD~2
-```
-
-```
-git show HEAD~2:file1.txt
-```
-
-# Shows the version of file stored in this commit
-
-Comparing commits
-
-```
-git diff HEAD~2 HEAD
-```
-
-# Shows the changes between two commits
-
-```
-git diff HEAD~2 HEAD file.txt
-```
-
-# Changes to file.txt only
-
-Checking out a commit
-
-```
-git checkout dad47ed
-```
-
-# Checks out the given commit
-
-```
-git checkout master
-```
-
-# Checks out the master branch
-
-Finding a bad commit
-
-```
-git bisect start
-```
-
-```
-git bisect bad
-```
-
-# Marks the current commit as a bad commit
-
-```
-git bisect good ca49180
-```
-
-# Marks the given commit as a good commit
-
-```
-git bisect reset
-```
-
-# Terminates the bisect session
-
-Finding contributors
+### Finding contributors
 
 ```
 git shortlog
+git shortlog -s                 # shows the number of contributions for each user
 ```
 
-Viewing the history of a file
+### Viewing the history of a file
 
 ```
-git log file.txt
+git log file.txt                # Shows the commits that touched file.txt
+git log --stat file.txt         # Shows statistics (the number of changes) for file.txt
+git log --patch file.txt        # Shows the patches (changes) applied to file.txt
 ```
 
-# Shows the commits that touched file.txt
+### Finding the author of lines
 
 ```
-git log --stat file.txt
+git blame file.txt              # Shows the author of each line in file.txt
 ```
 
-# Shows statistics (the number of changes) for file.txt
+### Tagging
 
 ```
-git log --patch file.txt
+git tag v1.0                    # Tags the last commit as v1.0
+git tag v1.0 5e7a828            # Tags an earlier commit
+git tag                         # Lists all the tags
+git tag -d v1.0                 # Deletes the given tag
 ```
 
-# Shows the patches (changes) applied to file.txt
+## Branching & Merging
 
-Finding the author of lines
-
-```
-git blame file.txt
-```
-
-# Shows the author of each line in file.txt
-
-Tagging
+### Managing branches
 
 ```
-git tag v1.0
+git branch bugfix               # Creates a new branch called bugfix
+git checkout bugfix             # Switches to the bugfix branch
+git switch bugfix               # Same as the above (newer command)
+git switch -C bugfix            # Creates and switches
+git branch -d bugfix            # Deletes the bugfix branch
 ```
 
-# Tags the last commit as v1.0
+### Comparing branches
 
 ```
-git tag v1.0 5e7a828
+git log master..bugfix          # Lists the commits in the bugfix branch not in master
+git diff master..bugfix         # Shows the summary of changes
 ```
 
-# Tags an earlier commit
+### Stashing
 
 ```
-git tag
+git stash push -m "Shash"       # Creates a new stash
+git stash list                  # Lists all the stashes
+git stash show stash@{1}        # Shows the given stash
+git stash show 1                # shortcut for stash@{1}
+git stash apply 1               # Applies the given stash to the working dir
+git stash drop 1                # Deletes the given stash
+git stash clear                 # Deletes all the stashes
 ```
 
-# Lists all the tags
+### Merging
 
 ```
-git tag -d v1.0
+git merge bugfix                # Merges the bugfix branch into the current branch
+git merge --no-ff bugfix        # Creates a merge commit even if FF is possible
+git merge --squash bugfix       # Performs a squash merge
+git merge --abort               # Aborts the merge
 ```
 
-# Deletes the given tag
-
-Branching & Merging
-
-Managing branches
+## Viewing the merged branches
 
 ```
-git branch bugfix
+git branch --merged             # Shows the merged branches
+git branch --no-merged          # Shows the unmerged branches
 ```
 
-# Creates a new branch called bugfix
+## Rebasing
 
 ```
-git checkout bugfix
+git rebase master               # Changes the base of the current branch - it rewrites history , so don't try this at home
 ```
 
-# Switches to the bugfix branch
+## Cherry picking
 
 ```
-git switch bugfix
+git cherry-pick dad47ed         # Applies the given commit on the current branch
 ```
 
-# Same as the above
+## Collaboration
 
-```
-git switch -C bugfix
-```
-
-# Creates and switches
-
-```
-git branch -d bugfix
-```
-
-# Deletes the bugfix branch
-
-Comparing branches
-
-```
-git log master..bugfix
-```
-
-# Lists the commits in the bugfix branch not in master
-
-```
-git diff master..bugfix
-```
-
-# Shows the summary of changes
-
-Stashing
-
-```
-git stash push -m ÒNew tax rulesÓ
-```
-
-# Creates a new stash
-
-```
-git stash list
-```
-
-# Lists all the stashes
-
-```
-git stash show stash@{1}
-```
-
-# Shows the given stash
-
-```
-git stash show 1
-```
-
-# shortcut for stash@{1}
-
-```
-git stash apply 1
-```
-
-# Applies the given stash to the working dir
-
-```
-git stash drop 1
-```
-
-# Deletes the given stash
-
-```
-git stash clear
-```
-
-# Deletes all the stashes
-
-Merging
-
-```
-git merge bugfix
-```
-
-# Merges the bugfix branch into the current branch
-
-```
-git merge --no-ff bugfix
-```
-
-# Creates a merge commit even if FF is possible
-
-```
-git merge --squash bugfix
-```
-
-# Performs a squash merge
-
-```
-git merge --abort
-```
-
-# Aborts the merge
-
-Viewing the merged branches
-
-```
-git branch --merged
-```
-
-# Shows the merged branches
-
-```
-git branch --no-merged
-```
-
-# Shows the unmerged branches
-
-Rebasing
-
-```
-git rebase master
-```
-
-# Changes the base of the current branch
-
-Cherry picking
-
-```
-git cherry-pick dad47ed
-```
-
-# Applies the given commit on the current branch
-
-Collaboration
-Cloning a repository
+### Cloning a repository
 
 ```
 git clone url
 ```
 
-Syncing with remotes
+### Syncing with remotes
 
 ```
-git fetch origin master
+git fetch origin master         # Fetches master from origin
+git fetch origin                # Fetches all objects from origin
+git fetch                       # Shortcut for "git fetch origin"
+git pull                        # Fetch + merge
+git push origin master          # Pushes master to origin
+git push                        # Shortcut for "git push origin master"
 ```
 
-# Fetches master from origin
+### Sharing tags
 
 ```
-git fetch origin
+git push origin v1.0            # Pushes tag v1.0 to origin
+git push origin -delete v1.0    # deletes the tag
 ```
 
-# Fetches all objects from origin
+### Sharing branches
 
 ```
-git fetch
+git branch -r                   # Shows remote tracking branches
+git branch -vv                  # Shows local & remote tracking branches
+git push -u origin bugfix       # Pushes bugfix to origin
+git push -d origin bugfix       # Removes bugfix from origin
 ```
 
-# Shortcut for Ògit fetch originÓ
+### Managing remotes
 
 ```
-git pull
+git remote                      # Shows remote repos
+git remote add upstream url     # Adds a new remote called upstream
+git remote rm upstream          # Remotes upstream
 ```
 
-# Fetch + merge
+## Rewriting History
+
+Please avoid **Rewriting Shared History**: Only rewrite history in private branches or before pushing changes to the remote.
+Use git revert Instead: To fix mistakes in a public branch, create new commits that undo or adjust previous changes without altering the existing history.
+These practices help maintain a clear and consistent history, minimizing disruptions for collaborators.
+
+### Undoing commits
 
 ```
-git push origin master
+git reset --soft HEAD^              # Removes the last commit, keeps changed staged
+git reset --mixed HEAD^             # Unstages the changes as well
+git reset --hard HEAD^              # Discards local changes
 ```
 
-# Pushes master to origin
+### Reverting commits
 
 ```
-git push
-```
-
-# Shortcut for Ògit push origin masterÓ
-
-Sharing tags
-
-```
-git push origin v1.0
-```
-
-# Pushes tag v1.0 to origin
-
-```
-git push origin Ñdelete v1.0
-```
-
-Sharing branches
-
-```
-git branch -r
-```
-
-# Shows remote tracking branches
-
-```
-git branch -vv
-```
-
-# Shows local & remote tracking branches
-
-```
-git push -u origin bugfix
-```
-
-# Pushes bugfix to origin
-
-```
-git push -d origin bugfix
-```
-
-# Removes bugfix from origin
-
-Managing remotes
-
-```
-git remote
-```
-
-# Shows remote repos
-
-```
-git remote add upstream url
-```
-
-# Adds a new remote called upstream
-
-```
-git remote rm upstream
-```
-
-# Remotes upstream
-
-Rewriting History
-Undoing commits
-
-```
-git reset --soft HEAD^
-```
-
-# Removes the last commit, keeps changed staged
-
-```
-git reset --mixed HEAD^
-```
-
-# Unstages the changes as well
-
-```
-git reset --hard HEAD^
-```
-
-# Discards local changes
-
-Reverting commits
-
-```
-git revert 72856ea
-```
-
-# Reverts the given commit
-
-```
-git revert HEAD~3..
-```
-
-# Reverts the last three commits
-
-```
+git revert 72856ea                  # Reverts the given commit
+git revert HEAD~3..                 # Reverts the last three commits
 git revert --no-commit HEAD~3..
 ```
 
-Recovering lost commits
+### Recovering lost commits
 
 ```
-git reflog
+git reflog                          # Shows the history of HEAD
+git reflog show bugfix              # Shows the history of bugfix pointer
 ```
 
-# Shows the history of HEAD
-
-```
-git reflog show bugfix
-```
-
-# Shows the history of bugfix pointer
-
-Amending the last commit
+### Amending the last commit
 
 ```
 git commit --amend
 ```
 
-Interactive rebasing
+### Interactive rebasing
 
 ```
-git rebase -i HEAD~5
+git rebase -i HEAD~5                #starts the interactive rebase at the fifth commit befor HEAD
 ```
