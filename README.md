@@ -24,6 +24,7 @@ Mastering Git commands not only boosts productivity but also enhances your **und
 - [Branching & Merging](#branching--merging)
 - [Collaboration](#collaboration)
 - [Rewriting History](#rewriting-history)
+- [Powerful Alias](#powerful-alias)
 
 ## Configuration
 
@@ -380,4 +381,82 @@ git commit --amend
 
 ```
 git rebase -i HEAD~5                #starts the interactive rebase at the fifth commit befor HEAD
+```
+
+## Powerful Alias
+
+# Adding alias from command line
+
+```
+git config --global alias.st status         #add a new line to the [alias] section of your global config
+
+```
+
+# Editing the global .gitconfi file
+
+Open the global config file in the default editor:
+
+```
+git config --global -e
+```
+
+And add this section:
+
+```
+[alias]
+   st = status
+```
+
+## The lazy typer
+
+```
+[alias]
+    s  = status
+    st = status
+    c = commit
+    sw = switch
+    br = branch
+```
+
+## Common Typos
+
+```
+[alias]
+    comit = commit
+    swicht = switch
+    statut = status
+```
+
+## Speedy commands
+
+```
+[alias]
+    cam = git commit -am                    #stage all and commit with message
+    dlc = diff --cached HEAD^               # Diff of last commit
+    aliases = config --get-regexp alias     # list all defined aliases
+    first = rev-list --max-parents=0 HEAD   # Find very first commit
+    incoming = log HEAD..@{upstream}        # what would be merged
+    gitoutgoing = log @{upstream}..HEAD        # what would be pushed
+```
+
+## Pretty formats
+
+Add this section to your .gitconfig file:
+
+```
+[pretty]
+    slog = format:%C(yellow)%h %Cred%as %Cblue%an%Cgreen%d %Creset%s
+    bw = format:%h | %as | %>(20,trunc)%d%x09%s
+```
+
+Then you can use this alias:
+
+```
+[alias]
+    l1 = log -1 --pretty=slog
+    l5 = log -5 --pretty=slog
+    slog = log --pretty=slog
+    slogbw = log --pretty=bw
+    glog = log --graph --pretty=slog
+    outgoing = log --pretty=slog @{u}..
 ```
