@@ -24,7 +24,7 @@ Mastering Git commands not only boosts productivity but also enhances your **und
 - [Branching & Merging](#branching--merging)
 - [Working with remote repositories](#working-with-remote-repositories)
 - [Rewriting History](#rewriting-history)
-- [Powerful Alias](#powerful-alias)
+- [Powerful Aliases](#powerful-aliases)
 
 ## Configuration
 
@@ -378,7 +378,7 @@ git commit --amend
 git rebase -i HEAD~5                #starts the interactive rebase at the fifth commit befor HEAD
 ```
 
-## Powerful Alias
+## Powerful Aliases
 
 ### Adding alias from command line
 
