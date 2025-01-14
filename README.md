@@ -1,4 +1,3 @@
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png " height="50" />
 
 # Git Command Line Cheat Sheet
