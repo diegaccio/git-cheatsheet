@@ -333,9 +333,39 @@ git push -d origin bugfix       # Removes bugfix from origin
 ### Managing remotes
 
 ```
-git remote                      # Shows remote repos
+git remote -v                   # Shows remote repos
 git remote add upstream url     # Adds a new remote called upstream
 git remote rm upstream          # Remotes upstream
+git remote show origin          # Shows the mapping of the local branches to the remote branches
+git branch -u origin/serverfix  # Branch serverfix set up to track remote branch serverfix from origin.
+```
+
+### Configuring a remote repository for a fork (i.e. GitHub constribution)
+
+You must configure a remote that points to the upstream repository in Git to sync changes you make in a fork with the original repository (**Pull Request**). This also allows you to sync changes made in the original repository with the fork.
+
+List the current configured remote repository for your fork:
+
+```
+$ git remote -v
+> origin  https://github.com/YOUR-USERNAME/YOUR-FORK.git (fetch)
+> origin  https://github.com/YOUR-USERNAME/YOUR-FORK.git (push)
+```
+
+Specify a new remote upstream repository that will be synced with the fork:
+
+```
+git remote add upstream https://github.com/ORIGINAL-OWNER/ORIGINAL-REPOSITORY.git
+```
+
+Verify the new upstream repository you've specified for your fork:
+
+```
+$ git remote -v
+> origin    https://github.com/YOUR-USERNAME/YOUR-FORK.git (fetch)
+> origin    https://github.com/YOUR-USERNAME/YOUR-FORK.git (push)
+> upstream  https://github.com/ORIGINAL-OWNER/ORIGINAL-REPOSITORY.git (fetch)
+> upstream  https://github.com/ORIGINAL-OWNER/ORIGINAL-REPOSITORY.git (push)
 ```
 
 ## Rewriting History
