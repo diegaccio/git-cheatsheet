@@ -128,8 +128,14 @@ git rm --cached file1.js        # Removes from staging area only
 ### Renaming or moving files
 
 ```
-git mv file1.js file1.txt       # Viewing the staged/unstaged changes
+git mv file1.js file1.txt
+```
+
+### Viewing the staged/unstaged changes
+
+```
 git diff                        # Shows unstaged changes
+git diff file.txt               # Shows unstaged changes for a single file
 git diff --staged               # Shows staged changes
 git diff --cached               # Same as the above
 ```
