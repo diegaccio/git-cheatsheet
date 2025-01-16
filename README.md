@@ -55,6 +55,32 @@ git config --global core.editor "code --wait"   # Sets the default editor to vsc
 git config --global -e                          # Opens the global config file in the default editor
 ```
 
+### Merge and Diff tool
+
+To setup p4merge ad diff and merge tool on macOS, install it using brew:
+
+```
+brew install --cask p4v
+```
+
+Then add this sections to your git confi file:
+
+```
+[diff]
+	tool = p4merge
+[difftool "p4merge"]
+	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
+[difftool]
+	prompt = false
+[merge]
+	tool = p4merge
+[mergetool "p4merge"]
+	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
+[mergetool]
+	prompt = false
+	keepBackup = false
+```
+
 ## Creating Snapshots
 
 ### Initializing a repository
