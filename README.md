@@ -1,10 +1,10 @@
-<img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png " height="50" />
+<img src="Git-Logo-2Color.png " height="50" />
 
 # Git Command Line Cheat Sheet
 
 ## Why Learn Git Commands?
 
-I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my favorite IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git commands.
+I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my go to IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git commands.
 
 Using Git commands directly has transformed the way I work:
 
@@ -57,7 +57,7 @@ git config --global -e                          # Opens the global config file i
 
 ### Merge and Diff tool
 
-To setup p4merge ad diff and merge tool on macOS, install it using brew:
+To setup p4merge as diff and merge tool on macOS, install it using brew:
 
 ```
 brew install --cask p4v
