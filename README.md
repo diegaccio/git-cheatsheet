@@ -4,7 +4,7 @@
 
 ## Why Learn Git Commands?
 
-I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my go to IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git commands.
+I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my go to IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git command line.
 
 Using Git commands directly has transformed the way I work:
 
