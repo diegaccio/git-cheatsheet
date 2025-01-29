@@ -2,20 +2,6 @@
 
 # Git Command Line Cheat Sheet
 
-## Why Learn Git Commands?
-
-I heavily used Git with a GUI tool, [Git Extensions](https://gitextensions.github.io/), on Windows for my daily job. However, my favorite operating systems are macOS and Ubuntu, which I use at home for personal development and learning. On those systems my go to IDE is VS Code. Its Git integration, although helpful, is not so powerfull. So I came across THE book: [Pro Git](https://git-scm.com/book/en/v2) by Scott Chacon and Ben Straub. That great reading motivated me to embrace Git command line.
-
-Using Git commands directly has transformed the way I work:
-
-- **Efficiency**: Commands are faster for repetitive tasks and managing large repositories.
-- **Flexibility**: The command line offers advanced features not always accessible in GUIs.
-- **Portability**: Command-line skills are universally applicable across systems (like servers you access via ssh).
-- **Problem-Solving**: Most Git troubleshooting resources are command-centric (like aborting a bad merge).
-- **Control**: The command line provides unmatched precision and intent in operations.
-
-Mastering Git commands not only boosts productivity but also enhances your **understanding** of version control, making you a more versatile developer.
-
 ## Table of Contents
 
 - [Configuration](#configuration)
@@ -371,7 +357,7 @@ git remote show origin          # Shows the mapping of the local branches to the
 git branch -u origin/serverfix  # Branch serverfix set up to track remote branch serverfix from origin.
 ```
 
-### Configuring a remote repository for a fork (i.e. GitHub constribution)
+### Configuring a remote repository for a fork (i.e. GitHub contribution)
 
 You must configure a remote that points to the upstream repository in Git to sync changes you make in a fork with the original repository (**Pull Request**). This also allows you to sync changes made in the original repository with the fork.
 
